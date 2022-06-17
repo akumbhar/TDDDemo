@@ -5,7 +5,8 @@ class StringCalculator {
     fun add(numberString: String?): Int {
         if (numberString.isNullOrEmpty()) return 0
         return try {
-            numberString.toInt()
+            val tokens =  numberString.split(",")
+            tokens[0].toInt() + tokens[1].toInt()
         } catch (e: NumberFormatException) {
             e.printStackTrace()
             0

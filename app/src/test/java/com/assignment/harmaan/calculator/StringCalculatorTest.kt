@@ -35,7 +35,7 @@ class StringCalculatorTest {
 
     @Test
     fun `return sum when input is 2 comma separated number string`() {
-        assertEquals(10, calculator.add("10,20"))
+        assertEquals(30, calculator.add("10,20"))
     }
 
 }
