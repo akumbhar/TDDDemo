@@ -6,7 +6,8 @@ class StringCalculator {
         if (numberString.isNullOrEmpty()) return 0
         val numberList = mutableListOf<Int>()
 
-        numberString.split(",").forEach {
+        val updatedString = numberString.replace("\n", ",")
+        updatedString.split(",").forEach {
             numberList.add(
                 try {
                     it.trim().toInt()
@@ -15,7 +16,6 @@ class StringCalculator {
                 }
             )
         }
-
         return numberList.sum()
     }
 
