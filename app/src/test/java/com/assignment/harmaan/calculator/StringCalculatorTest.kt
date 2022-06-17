@@ -56,4 +56,9 @@ class StringCalculatorTest {
         assertEquals(100, calculator.add("20, 40, 40"))
     }
 
+   @Test
+   fun `return sum when multiple comma separated number string with new line`() {
+        assertEquals(100, calculator.add("20\n40,40"))
+   }
+
 }
