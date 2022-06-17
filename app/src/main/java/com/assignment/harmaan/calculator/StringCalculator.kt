@@ -1,21 +1,16 @@
 package com.assignment.harmaan.calculator
 
-const val NEW_LINE_CHAR = "\n"
-const val DELIMITER_PREFIX = "//"
+const val NEW_LINE_DELIMETER = "\n"
+const val COMMA = ","
 
 class StringCalculator {
 
-    private var delimiter = ","
     fun add(numberString: String?): Int {
         if (numberString.isNullOrEmpty()) return 0
-
-        val startIndex = numberString.indexOf(DELIMITER_PREFIX) + DELIMITER_PREFIX.length
-        val endIndex = numberString.indexOf(NEW_LINE_CHAR)
-        delimiter = numberString.substring(startIndex, endIndex)
         val numberList = mutableListOf<Int>()
         with(numberString) {
-            replace(NEW_LINE_CHAR, delimiter).run {
-                split(delimiter).forEach {
+            replace(NEW_LINE_DELIMETER, COMMA).run {
+                split(COMMA).forEach {
                     numberList.add(
                         try {
                             it.trim().toInt()
@@ -30,5 +25,4 @@ class StringCalculator {
         }
         return numberList.sum()
     }
-
-   }
+}
