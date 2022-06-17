@@ -4,13 +4,19 @@ class StringCalculator {
 
     fun add(numberString: String?): Int {
         if (numberString.isNullOrEmpty()) return 0
-        return try {
-            val tokens =  numberString.split(",")
-            tokens[0].toInt() + tokens[1].toInt()
-        } catch (e: NumberFormatException) {
-            e.printStackTrace()
-            0
+        val numberList = mutableListOf<Int>()
+
+        numberString.split(",")?.forEach {
+            numberList.add(
+                try {
+                    it.toInt()
+                } catch (e: NumberFormatException) {
+                    0
+                }
+            )
         }
+
+        return numberList.sum()
     }
 
 }

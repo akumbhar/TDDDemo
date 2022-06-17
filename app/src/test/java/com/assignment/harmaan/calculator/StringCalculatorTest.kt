@@ -1,6 +1,6 @@
 package com.assignment.harmaan.calculator
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
@@ -36,6 +36,13 @@ class StringCalculatorTest {
     @Test
     fun `return sum when input is 2 comma separated number string`() {
         assertEquals(30, calculator.add("10,20"))
+    }
+
+    @Test
+    fun `return single digit sum when either invalid number string entered`() {
+        assertEquals(10, calculator.add("10,**"))
+        assertEquals(20, calculator.add("**,20"))
+        assertEquals(0, calculator.add("**,**"))
     }
 
 }
