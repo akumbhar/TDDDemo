@@ -1,13 +1,16 @@
 package com.assignment.harmaan.calculator
 
+const val NEW_LINE_DELIMETER = "\n"
+const val COMMA = ","
+
 class StringCalculator {
 
     fun add(numberString: String?): Int {
         if (numberString.isNullOrEmpty()) return 0
         val numberList = mutableListOf<Int>()
         with(numberString) {
-            replace("\n", ",").apply {
-                split(",").forEach {
+            replace(NEW_LINE_DELIMETER, COMMA).run {
+                split(COMMA).forEach {
                     numberList.add(
                         try {
                             it.trim().toInt()
