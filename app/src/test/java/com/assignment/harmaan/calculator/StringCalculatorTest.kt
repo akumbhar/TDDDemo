@@ -15,7 +15,6 @@ class StringCalculatorTest {
 
     @Test
     fun `return 0 when input is empty string`() {
-
         assertEquals(0, calculator.add(""))
     }
 
