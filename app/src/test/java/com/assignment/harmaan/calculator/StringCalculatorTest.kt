@@ -61,4 +61,9 @@ class StringCalculatorTest {
         assertEquals(100, calculator.add("20\n40,40"))
    }
 
+   @Test
+   fun `return sum when dynamically update delimiter`() {
+        assertEquals(100, calculator.add("//;\\n1;2"))
+   }
+
 }
