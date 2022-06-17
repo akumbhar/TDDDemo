@@ -4,8 +4,12 @@ class StringCalculator {
 
     fun add(numberString: String?): Int {
         if (numberString.isNullOrEmpty()) return 0
-        return numberString.toInt()
-        return -1
+        return try {
+            numberString.toInt()
+        } catch (e: NumberFormatException) {
+            e.printStackTrace()
+            0
+        }
     }
 
 }

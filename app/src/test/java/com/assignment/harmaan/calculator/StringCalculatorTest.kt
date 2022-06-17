@@ -28,4 +28,9 @@ class StringCalculatorTest {
         assertEquals(8, calculator.add("8"))
     }
 
+    @Test
+    fun `return 0 when input is not a number string`() {
+        assertEquals(0, calculator.add("ABC"))
+    }
+
 }
