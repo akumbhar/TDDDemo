@@ -9,7 +9,7 @@ class StringCalculator {
         numberString.split(",")?.forEach {
             numberList.add(
                 try {
-                    it.toInt()
+                    it.trim().toInt()
                 } catch (e: NumberFormatException) {
                     0
                 }
