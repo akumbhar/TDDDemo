@@ -66,4 +66,9 @@ class StringCalculatorTest {
         assertEquals(3, calculator.add("//;\n1;2"))
    }
 
+    @Test
+   fun `return sum when dynamically update semicolon delimiter`() {
+        assertEquals(90, calculator.add("//:\n60:30"))
+   }
+
 }

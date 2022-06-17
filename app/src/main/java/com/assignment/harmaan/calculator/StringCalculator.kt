@@ -2,20 +2,19 @@ package com.assignment.harmaan.calculator
 
 const val NEW_LINE_CHAR = "\n"
 const val DELIMITER_PREFIX = "//"
+const val DEFAULT_DELIMITER = ","
 
 class StringCalculator {
 
-    private var delimiter = ","
     fun add(numberString: String?): Int {
         if (numberString.isNullOrEmpty()) return 0
 
-        if (numberString.contains(DELIMITER_PREFIX)) {
+        val delimiter = if (numberString.contains(DELIMITER_PREFIX)) {
             val startIndex = numberString.indexOf(DELIMITER_PREFIX) + DELIMITER_PREFIX.length
             val endIndex = numberString.indexOf(NEW_LINE_CHAR)
-            delimiter = numberString.substring(startIndex, endIndex)
+            numberString.substring(startIndex, endIndex)
         } else {
-            delimiter = ","
-
+            DEFAULT_DELIMITER
         }
         val numberList = mutableListOf<Int>()
         with(numberString) {
