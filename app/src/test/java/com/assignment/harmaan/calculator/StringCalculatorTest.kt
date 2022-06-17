@@ -63,7 +63,7 @@ class StringCalculatorTest {
 
    @Test
    fun `return sum when dynamically update delimiter`() {
-        assertEquals(100, calculator.add("//;\\n1;2"))
+        assertEquals(3, calculator.add("//;\n1;2"))
    }
 
 }
