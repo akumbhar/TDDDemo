@@ -45,4 +45,15 @@ class StringCalculatorTest {
         assertEquals(0, calculator.add("**,**"))
     }
 
+    @Test
+    fun `return sum when multiple comma separated number string entered`() {
+        assertEquals(50, calculator.add("10,5,35"))
+        assertEquals(60, calculator.add("10,20,30"))
+    }
+
+    @Test
+    fun `return sum when multiple comma separated number string entered with space`() {
+        assertEquals(100, calculator.add("20, 40, 40"))
+    }
+
 }
