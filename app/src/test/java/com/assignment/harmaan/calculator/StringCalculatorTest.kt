@@ -56,28 +56,37 @@ class StringCalculatorTest {
         assertEquals(100, calculator.add("20, 40, 40"))
     }
 
-   @Test
-   fun `return sum when multiple comma separated number string with new line`() {
+    @Test
+    fun `return sum when multiple comma separated number string with new line`() {
         assertEquals(100, calculator.add("20\n40,40"))
-   }
+    }
 
-   @Test
-   fun `return sum when dynamically update delimiter`() {
+    @Test
+    fun `return sum when dynamically update delimiter`() {
         assertEquals(3, calculator.add("//;\n1;2"))
-   }
+    }
 
     @Test
-   fun `return sum when dynamically update semicolon delimiter`() {
+    fun `return sum when dynamically update semicolon delimiter`() {
         assertEquals(90, calculator.add("//:\n60:30"))
-   }
+    }
 
     @Test
-   fun `return exception when negative number entered`() {
+    fun `return exception when negative number entered`() {
         try {
             calculator.add("-90")
-        }catch (e:Exception){
-            assertEquals("negatives not allowed", e.message)
+        } catch (e: Exception) {
+            assertEquals("negatives are not allowed [-90]", e.message)
         }
-   }
+    }
+
+    @Test
+    fun `return exception when multiple negative number entered`() {
+        try {
+            calculator.add("-90, -30")
+        } catch (e: Exception) {
+            assertEquals("negatives are not allowed [-90, -30]", e.message)
+        }
+    }
 
 }
