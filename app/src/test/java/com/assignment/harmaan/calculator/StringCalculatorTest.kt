@@ -117,6 +117,11 @@ class StringCalculatorTest {
     @Test
     fun `handle multiple delimiters`() {
         assertEquals(6, calculator.add("//[*][%]\n1*2%3"))
+    }
+
+    @Test
+    fun `handle multiple delimiters with length longer than 1`() {
+        assertEquals(6, calculator.add("//[***][%%]\n1***2%%3"))
 
     }
 
