@@ -22,6 +22,9 @@ class StringCalculator {
                 split(delimiter).forEach {
                     numberList.add(
                         try {
+                            if(it.trim().toInt().isNegativeNumber()){
+                                throw Exception("negatives not allowed")
+                            }
                             it.trim().toInt()
                         } catch (e: NumberFormatException) {
                             0
@@ -34,3 +37,6 @@ class StringCalculator {
     }
 
 }
+
+
+fun Int.isNegativeNumber() = this < 0
