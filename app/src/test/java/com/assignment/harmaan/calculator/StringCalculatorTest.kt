@@ -1,6 +1,7 @@
 package com.assignment.harmaan.calculator
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 
@@ -87,6 +88,16 @@ class StringCalculatorTest {
         } catch (e: Exception) {
             assertEquals("negatives are not allowed [-90, -30]", e.message)
         }
+    }
+
+  /*  Using TDD, Add a method to StringCalculator
+    called public int GetCalledCount()
+    that returns how many times Add() was invoked.
+    Remember - Start with a failing (or even non compiling) test*/
+
+    @Test
+    fun `verify method getCalledCount() get called`() {
+        assertNotNull(calculator.getCalledCount())
     }
 
 }
