@@ -23,7 +23,8 @@ class StringCalculator {
                 split(delimiter).forEach {
                     numberList.add(
                         try {
-                            it.trim().toInt()
+                            val eachNumber = it.trim().toInt()
+                            if (eachNumber < 1000) eachNumber else 0
                         } catch (e: NumberFormatException) {
                             0
                         }
@@ -35,7 +36,7 @@ class StringCalculator {
         if (negativeNumberList.isNotEmpty()) {
             throw Exception("negatives are not allowed $negativeNumberList")
         }
-        return numberList.filter { it < 1000 }.sum()
+        return numberList.sum()
     }
 
     fun getCalledCount() = count
