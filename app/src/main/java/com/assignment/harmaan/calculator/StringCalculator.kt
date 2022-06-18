@@ -1,7 +1,8 @@
 package com.assignment.harmaan.calculator
 
-const val NEW_LINE_CHAR = "]\n"
+const val NEW_LINE_CHAR = "\n"
 const val DELIMITER_PREFIX = "//["
+const val DELIMITER_SUFFIX = "]\n"
 const val DEFAULT_DELIMITER = ","
 
 class StringCalculator {
@@ -12,7 +13,7 @@ class StringCalculator {
 
         val delimiter = if (numberString.contains(DELIMITER_PREFIX)) {
             val startIndex = numberString.indexOf(DELIMITER_PREFIX) + DELIMITER_PREFIX.length
-            val endIndex = numberString.indexOf(NEW_LINE_CHAR)
+            val endIndex = numberString.indexOf(DELIMITER_SUFFIX)
             numberString.substring(startIndex, endIndex)
         } else {
             DEFAULT_DELIMITER
