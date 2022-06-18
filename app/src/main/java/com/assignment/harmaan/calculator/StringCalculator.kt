@@ -17,21 +17,28 @@ class StringCalculator {
             DEFAULT_DELIMITER
         }
         val numberList = mutableListOf<Int>()
+        val negativeNumberList = mutableListOf<Int>()
         with(numberString) {
             replace(NEW_LINE_CHAR, delimiter).run {
                 split(delimiter).forEach {
                     numberList.add(
                         try {
-                            if(it.trim().toInt().isNegativeNumber()){
-                                throw Exception("negatives not allowed")
+                            val eachNumber = it.trim().toInt()
+                            if(eachNumber.isNegativeNumber()){
+                                negativeNumberList.add(eachNumber)
+                                0
+                            }else {
+                                it.trim().toInt()
                             }
-                            it.trim().toInt()
                         } catch (e: NumberFormatException) {
                             0
                         }
                     )
                 }
             }
+        }
+        if(negativeNumberList.isNotEmpty()){
+            throw Exception("negatives are not allowed $negativeNumberList")
         }
         return numberList.sum()
     }
