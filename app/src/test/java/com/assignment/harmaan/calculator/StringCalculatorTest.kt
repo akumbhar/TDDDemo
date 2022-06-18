@@ -97,6 +97,14 @@ class StringCalculatorTest {
     }
 
     @Test
+    fun `verify method getCalledCount() is correct`() {
+        calculator.resetCount()
+        calculator.add("1")
+        calculator.add("2")
+        assertEquals(2, calculator.getCalledCount())
+    }
+
+    @Test
     fun `if number is greater than 1000 then it should be ignored for sum`() {
         assertEquals(2, calculator.add("2,1001"))
     }
