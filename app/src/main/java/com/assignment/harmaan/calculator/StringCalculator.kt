@@ -35,7 +35,7 @@ class StringCalculator {
         if (negativeNumberList.isNotEmpty()) {
             throw Exception("negatives are not allowed $negativeNumberList")
         }
-        return numberList.sum()
+        return numberList.filter { it < 1000 }.sum()
     }
 
     fun getCalledCount() = count
