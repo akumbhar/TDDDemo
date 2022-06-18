@@ -90,14 +90,18 @@ class StringCalculatorTest {
         }
     }
 
-  /*  Using TDD, Add a method to StringCalculator
-    called public int GetCalledCount()
-    that returns how many times Add() was invoked.
-    Remember - Start with a failing (or even non compiling) test*/
 
     @Test
     fun `verify method getCalledCount() get called`() {
         assertNotNull(calculator.getCalledCount())
+    }
+
+    @Test
+    fun `verify method getCalledCount() is correct`() {
+        calculator.resetCount()
+        calculator.add("1")
+        calculator.add("2")
+        assertEquals(2, calculator.getCalledCount())
     }
 
 }

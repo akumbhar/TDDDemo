@@ -32,15 +32,18 @@ class StringCalculator {
             }
         }
         val negativeNumberList = numberList.filter { it.isNegativeNumber() }
-        if(negativeNumberList.isNotEmpty()){
+        if (negativeNumberList.isNotEmpty()) {
             throw Exception("negatives are not allowed $negativeNumberList")
         }
         return numberList.sum()
     }
 
     fun getCalledCount() = count
+    fun resetCount() {
+        count = 0
+    }
 
-    companion object{
+    companion object {
         private var count = 0
     }
 
