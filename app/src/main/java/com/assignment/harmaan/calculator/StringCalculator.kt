@@ -1,7 +1,7 @@
 package com.assignment.harmaan.calculator
 
-const val NEW_LINE_CHAR = "\n"
-const val DELIMITER_PREFIX = "//"
+const val NEW_LINE_CHAR = "]\n"
+const val DELIMITER_PREFIX = "//["
 const val DEFAULT_DELIMITER = ","
 
 class StringCalculator {
