@@ -1,6 +1,7 @@
 package com.assignment.harmaan.calculator
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
 
@@ -69,6 +70,15 @@ class StringCalculatorTest {
     @Test
    fun `return sum when dynamically update semicolon delimiter`() {
         assertEquals(90, calculator.add("//:\n60:30"))
+   }
+
+    @Test
+   fun `return exception when negative number entered`() {
+        try {
+            calculator.add("-90")
+        }catch (e:Exception){
+            assertEquals("negatives not allowed", e.message)
+        }
    }
 
 }
