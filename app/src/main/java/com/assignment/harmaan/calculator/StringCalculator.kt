@@ -11,9 +11,7 @@ class StringCalculator {
     fun add(numberString: String?): Int {
         count++
         if (numberString.isNullOrEmpty()) return 0
-
         val numberList = mutableListOf<Int>()
-
         if (!numberString.contains(MULTI_DELIMITER)) {
 
             val delimiter = if (numberString.contains(DELIMITER_PREFIX)) {
@@ -27,30 +25,16 @@ class StringCalculator {
             with(numberString) {
                 replace(NEW_LINE_CHAR, delimiter).run {
                     split(delimiter).forEach {
-                        numberList.add(
-                            try {
-                                val eachNumber = it.trim().toInt()
-                                if (eachNumber < 1000) eachNumber else 0
-                            } catch (e: NumberFormatException) {
-                                0
-                            }
-                        )
+                        numberList.add(getValidNumberFromString(it))
                     }
                 }
             }
-        }else{
+        } else {
             val delimiter = getMultipleDelimiters(numberString)
-            with(numberString){
+            with(numberString) {
                 substringAfter(NEW_LINE_CHAR).run {
-                    split(delimiter[0],delimiter[1]).forEach {
-                        numberList.add(
-                            try {
-                                val eachNumber = it.trim().toInt()
-                                if (eachNumber < 1000) eachNumber else 0
-                            } catch (e: NumberFormatException) {
-                                0
-                            }
-                        )
+                    split(delimiter[0], delimiter[1]).forEach {
+                        numberList.add(getValidNumberFromString(it))
                     }
                 }
             }
@@ -63,7 +47,7 @@ class StringCalculator {
     }
 
     private fun getMultipleDelimiters(numberString: String): MutableList<String> {
-        var delimiterList = mutableListOf<String>()
+        val delimiterList = mutableListOf<String>()
         val delimiter1 = numberString.substring(
             numberString.indexOf(DELIMITER_PREFIX) + DELIMITER_PREFIX.length,
             numberString.indexOf(
@@ -79,6 +63,15 @@ class StringCalculator {
         delimiterList.add(delimiter1)
         delimiterList.add(delimiter2)
         return delimiterList
+    }
+
+    private fun getValidNumberFromString(number: String): Int {
+        return try {
+            val eachNumber = number.trim().toInt()
+            if (eachNumber < 1000) eachNumber else 0
+        } catch (e: NumberFormatException) {
+            0
+        }
     }
 
     fun getCalledCount() = count
