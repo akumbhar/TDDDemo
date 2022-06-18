@@ -7,6 +7,7 @@ const val DEFAULT_DELIMITER = ","
 class StringCalculator {
 
     fun add(numberString: String?): Int {
+        count++
         if (numberString.isNullOrEmpty()) return 0
 
         val delimiter = if (numberString.contains(DELIMITER_PREFIX)) {
@@ -35,6 +36,12 @@ class StringCalculator {
             throw Exception("negatives are not allowed $negativeNumberList")
         }
         return numberList.sum()
+    }
+
+    fun getCalledCount() = count
+
+    companion object{
+        private var count = 0
     }
 
 }
