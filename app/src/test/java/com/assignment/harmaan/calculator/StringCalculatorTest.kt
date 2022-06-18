@@ -109,4 +109,10 @@ class StringCalculatorTest {
         assertEquals(2, calculator.add("2,1001"))
     }
 
+    @Test
+    fun `return sum when dynamically delimiter of any length`() {
+        assertEquals(6, calculator.add("//[***]\n1***2***3"))
+
+    }
+
 }
